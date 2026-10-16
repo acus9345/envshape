@@ -1,0 +1,58 @@
+{
+  "name": "envshape",
+  "version": "0.1.0",
+  "description": "Validate environment variables and get a fully typed config object back. Zero dependencies, helpful errors.",
+  "keywords": [
+    "env",
+    "environment",
+    "environment-variables",
+    "dotenv",
+    "config",
+    "validation",
+    "typescript",
+    "typed"
+  ],
+  "homepage": "https://github.com/acus9345/envshape#readme",
+  "bugs": {
+    "url": "https://github.com/acus9345/envshape/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acus9345/envshape.git"
+  },
+  "license": "MIT",
+  "author": "acus9345 <acus9345@gmail.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "envshape": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "lint": "tsc -p tsconfig.json",
+    "test": "node --test \"test/*.test.ts\"",
+    "check": "npm run build && npm run lint && npm test",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^7.0.2"
+  }
+}
